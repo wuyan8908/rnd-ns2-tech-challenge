@@ -9,17 +9,9 @@ export class CompanyService {
   protected _roomRepo = new RoomRepo();
   protected _userRepo = new UserRepo();
 
+  //Changed to selectWithPagination function which support Pagination.
   async getUsers(filter: { username?: string }, pagination: { page: number, pageSize: number }): Promise<any> {
-    // const filteredUsers = await this._userRepo.select(filter);
-    // if (filteredUsers.length > pagination.pageSize) {
-    //   const offset = pagination.page * pagination.pageSize;
-
-    //   console.log("test", filteredUsers.length, offset, pagination.pageSize, pagination.page)
-    //   return filteredUsers.slice(offset, offset + pagination.pageSize);
-    // } else {
-    //   return filteredUsers
-    // }
-    return await this._userRepo.select({ ...filter, page: pagination.page, pageSize: pagination.pageSize })
+    return await this._userRepo.selectWithPagination(filter, pagination)
   }
 
   async getUserCompanies(filter: { companyIds: number[] }): Promise<any> {

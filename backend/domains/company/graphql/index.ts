@@ -1,3 +1,6 @@
+// Added PaginationType 
+// Added meta to usersResponseType
+// Changed Users Query input to accept pagination and filter by username. 
 export default `
   type CompaniesResponseType {
     data: [CompanyType]
@@ -5,11 +8,11 @@ export default `
 
   type UsersResponseType {
     data: [UserType]
-    meta: [MetaType]
+    meta: MetaType
   }
 
   type MetaType {
-    pagination: [PaginationType]
+    pagination: PaginationType
   }
 
   type RoomType {
