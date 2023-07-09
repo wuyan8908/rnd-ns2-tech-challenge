@@ -5,17 +5,9 @@ export default {
     async Users(parent: any, args: any, context: any, info: any): Promise<any> {
       const { filter, pagination } = args;
       const _companyService = new CompanyService();
-
-
-      //first we get the filtered Users than we do the pagination.
-      const data = await _companyService.getUsers(filter, { page: pagination.page ?? 0, pageSize: pagination.pageSize ?? 20 });
-
-
-      // const meta = {
-      //   pagination: calculatePagination(page, pageSize, totalCount)
-      // };
-
-      return { data };
+      // Changed data to usersResponse since we added pagination meta to usersResponse Type.
+      const usersResponse = await _companyService.getUsers(filter, { page: pagination.page ?? 0, pageSize: pagination.pageSize ?? 20 });
+      return usersResponse;
     },
     async Companies(parent: any, args: any, context: any, info: any): Promise<any> {
       const { filter } = args;
@@ -47,14 +39,3 @@ export default {
     },
   }
 };
-
-
-function calculatePagination(page: number, pageSize: number, totalCount: number) {
-  const totalOfPage = Math.ceil(totalCount / pageSize);
-  return {
-    totalOfPage,
-    page,
-    totalOfRecord: totalCount,
-    pageSize,
-  };
-}
