@@ -1,4 +1,3 @@
-import { companies } from "repo/data";
 import { CompanyService } from "../service";
 export default {
   Query: {
@@ -25,17 +24,13 @@ export default {
   CompanyType: {
     async rooms(parent: any, args: any, context: any, info: any): Promise<any> {
       const { id } = parent
-      const _companyService = new CompanyService();
-      const data = await _companyService.getCompanyRooms({ companyId: id });
-      return data;
+      return context.roomsLoader.load(id)
     },
   },
   UserType: {
     async companies(parent: any, args: any, context: any, info: any): Promise<any> {
       const { companyIds } = parent
-      const _companyService = new CompanyService();
-      const data = await _companyService.getUserCompanies({ companyIds });
-      return data;
+      return context.companyLoader.loadMany(companyIds);
     },
   }
 };
