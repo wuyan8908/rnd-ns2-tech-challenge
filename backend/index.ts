@@ -6,6 +6,7 @@ import { createServer } from "@graphql-yoga/node";
 
 import companyTypes from "domains/company/graphql/index";
 import companyResolver from "domains/company/resolvers/index";
+import { createContext } from "domains/company/context/index"
 
 const executableSchema = makeExecutableSchema({
   typeDefs: [companyTypes],
@@ -14,7 +15,7 @@ const executableSchema = makeExecutableSchema({
 
 const app = express()
 
-const yoga = createYoga({ schema: executableSchema })
+const yoga = createYoga({ schema: executableSchema, context: createContext })
 
 // Bind GraphQL Yoga to the graphql endpoint to avoid rendering the playground on any path
 app.use(yoga.graphqlEndpoint, yoga)
