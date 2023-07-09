@@ -1,0 +1,4 @@
+{
+    "exclude": ["node_modules", "test", "src/migrations"],
+    "extends": "./tsconfig"
+}
