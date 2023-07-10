@@ -32,5 +32,13 @@ export default {
       const { companyIds } = parent
       return context.companyLoader.loadMany(companyIds);
     },
+  },
+  Mutation: {
+    async createUser(parent: any, args: any, context: any, info: any): Promise<any> {
+      const { username } = args;
+      const _companyService = new CompanyService();
+      const newUser = await _companyService.createUser(username);
+      return newUser;
+    }
   }
 };

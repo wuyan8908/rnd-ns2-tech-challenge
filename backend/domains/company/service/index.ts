@@ -26,4 +26,9 @@ export class CompanyService {
     return await this._roomRepo.select(filter);
   }
 
+  async createUser(username: string): Promise<any> {
+    const newUser = await this._userRepo.create({ username });
+    return newUser;
+  }
+
 }
