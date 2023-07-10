@@ -22,12 +22,11 @@ export class UserRepo extends BaseRepo<IUser> {
       }
     }
   }> {
-    const { username } = filter;
     const { page, pageSize } = pagination;
 
     // Filter by username if specified, otherwise return all user data.
-    let filtered = username
-      ? await super.select({ username })
+    let filtered = filter?.username
+      ? await super.select({ username: filter.username })
       : this._data;
 
     // Apply pagination
