@@ -44,4 +44,18 @@ export class UserRepo extends BaseRepo<IUser> {
       }
     });
   }
+  async create(userData: { username: string }): Promise<IUser> {
+
+    // create the new user object
+    const newUser: IUser = {
+      id: this._data.length + 1, // set the id sequently 
+      username: userData.username,
+      companyIds: [], // set empty array for company ids first.
+    };
+
+    // add the new user to the user repo
+    this._data.push(newUser);
+
+    return Promise.resolve(newUser);
+  }
 }

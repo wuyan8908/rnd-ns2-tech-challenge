@@ -60,6 +60,10 @@ export default `
     pageSize: Int
   }
 
+  type Mutation {
+    createUser(username: String!): UserType
+  }
+  
   type Query {
     Companies(filter: CompanyFilterInput): CompaniesResponseType
     Rooms(filter: RoomFilterInput): RoomsResponseType
