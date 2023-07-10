@@ -1,27 +1,13 @@
-# Tech Challenge for the Full Stack Developer
+# This is the finished challenge for the Full Stack Developer
 
-Tech Challenge is to create a GraphQL Server with Node.js and Express.js, and frontend with sveltejs
-
-We'll provide an example server and a server that's already partially completed with devices.  You'll modify the second server for your tech challenge.
+This Tech challenge is created initially with GraphQL, node.js, Express.js and Svelte Js. 
+URQL is installed to support GraphQL API on the client side.
 
 ### Question 1
-The query below does not support pagination; so it takes too long to retrieve the data; please add support for pagination into the query
-```
-query Query {
-    Users{
-        data{
-            id
-            username
-            companies{
-                id
-                name
-            }
-        }
-    }
-}
-```
 
-the user type should be 
+The pagination feature is implemented based on the given type.
+Also, implement a simple page selector in question 3. So can easily test this feature. 
+Note: The page starts with 1.
 ```
   type PaginationType{
     totalOfPage: Int
@@ -40,26 +26,14 @@ the user type should be
 
 ### Question 2
 
-The query below has n+1 problem; please refactor the Users query to solve that problem
-```
-query Query {
-    Users{
-        data{
-            id
-            username
-            companies{
-                id
-                name
-            }
-        }
-    }
-}
-```
+DataLoader is added to the resolvers to solve the n+1 problem.
 
 ### Question 3
 
-the Users list in frontend shows mock data; Please modify the code; so it can display the users from backend with pagination
+URQL is used to fetch users from the GraphQL backend. and update the table UI with a page selector. 
+the Users list in frontend shows mock data; Please modify the code; so it can display the users from the backend with pagination
 
 ### Question 4
 
-Please extend the front end that allows users to create new user data (only username for now); and persist into backend by making a new mutation for creating user
+A createUser mutation is added to the GraphQL backend.
+A simple create user feature is created in the front end.
