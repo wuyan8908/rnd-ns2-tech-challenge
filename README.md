@@ -1,4 +1,4 @@
-# This is the finished challenge for the Full Stack Developer
+# This is the finished code for the Full Stack Developer Tech Challenge
 
 This Tech challenge is created initially with GraphQL, node.js, Express.js and Svelte Js. 
 URQL is installed to support GraphQL API on the client side.
